@@ -22,7 +22,7 @@ export function App() {
       : setContacts([contact, ...contacts]);
   };
 
-  const deleteContactFromContactList = contactId => {
+  const deleteContact = contactId => {
     setContacts(contacts.filter(contact => contact.id !== contactId));
   };
 
@@ -40,12 +40,12 @@ export function App() {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm onSubmitData={formSubmitHandler} contacts={contacts} />
+      <ContactForm onSubmit={formSubmitHandler} contacts={contacts} />
       <h1>Contacts</h1>
       <Filter value={filter} onChange={changeFilter} />
       <ContactList
         contacts={getContactsFilter()}
-        del={deleteContactFromContactList}
+        onDeleteContact={deleteContact}
       />
     </div>
   );
